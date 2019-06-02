@@ -36,6 +36,7 @@ const FormWrapper = styled(View)`
 `
 
 const FormRowWrapper = styled(View)`
+  width: 90%;
   flex-direction: row;
   justify-content: space-around;
 `
