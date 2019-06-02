@@ -1,39 +1,38 @@
 import * as React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { Router, Route, Link } from './Router'
+import { Text } from 'react-native'
+import { Router, Route, Switch, Redirect, Link } from './Router'
+import Login from '../../screens/Login'
+import { useUserContext } from '../../screens/Login/UserContext'
 
 const Home = () => <Text>Home</Text>
-const About = () => <Text>About</Text>
 
 export default () => {
+  const { userState, getUser } = useUserContext()
+  React.useEffect(() => {
+    getUser()
+  }, [userState.user && userState.user.id])
   return (
     <Router>
-      <View style={styles.container}>
-        <View style={styles.nav}>
-          <Link to="/">
-            <Text>Home</Text>
-          </Link>
-          <Link to="/about">
-            <Text>About</Text>
-          </Link>
-        </View>
-
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-      </View>
+      {userState.loggingIn ? null : userState.user ? (
+        <Route
+          path="/"
+          render={() => (
+            <Switch>
+              <Route path="/" exact component={Home} />
+              {/* <Route path="/policies" component={Policies} /> */}
+              <Route path="*" render={() => <Redirect to="/" />} />
+            </Switch>
+          )}
+        />
+      ) : (
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Login} />
+          <Route path="*" render={() => <Redirect to="/login" />} />
+        </Switch>
+      )}
     </Router>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  nav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-})
+export { Router, Route, Switch, Redirect, Link }

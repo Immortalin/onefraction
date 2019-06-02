@@ -1,29 +1,30 @@
 @font-face {
   font-family: 'AvantGardePro';
-  src: local('AvantGardePro'), url(./fonts/ITCAvantGardePro-Regular.otf) format('opentype');
+  src: local('AvantGardePro'), url(./assets/fonts/ITCAvantGardePro-Regular.otf) format('opentype');
 }
 
 @font-face {
   font-family: 'AvantGardePro';
-  src: local('AvantGardePro'), url(./fonts/ITCAvantGardePro-Extralight.otf) format('opentype');
+  src: local('AvantGardePro'),
+    url(./assets/fonts/ITCAvantGardePro-Extralight.otf) format('opentype');
   font-weight: 300;
 }
 
 @font-face {
   font-family: 'AvantGardePro';
-  src: local('AvantGardePro'), url(./fonts/ITCAvantGardePro-Medium.otf) format('opentype');
+  src: local('AvantGardePro'), url(./assets/fonts/ITCAvantGardePro-Medium.otf) format('opentype');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'AvantGardePro';
-  src: local('AvantGardePro'), url(./fonts/ITCAvantGardePro-Semibold.otf) format('opentype');
+  src: local('AvantGardePro'), url(./assets/fonts/ITCAvantGardePro-Semibold.otf) format('opentype');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'AvantGardePro';
-  src: local('AvantGardePro'), url(./fonts/ITCAvantGardePro-Bold.otf) format('opentype');
+  src: local('AvantGardePro'), url(./assets/fonts/ITCAvantGardePro-Bold.otf) format('opentype');
   font-weight: 900;
 }
 
