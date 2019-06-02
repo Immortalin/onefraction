@@ -1,3 +1,4 @@
+import './index.css'
 import { AppRegistry, Platform } from 'react-native'
 import App from './components/App'
 import { Config } from './utils/config'

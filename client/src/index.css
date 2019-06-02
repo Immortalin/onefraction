@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'AvantGardePro';
+  src: local('AvantGardePro'), url(./fonts/ITCAvantGardePro-Regular.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'AvantGardePro';
+  src: local('AvantGardePro'), url(./fonts/ITCAvantGardePro-Extralight.otf) format('opentype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'AvantGardePro';
+  src: local('AvantGardePro'), url(./fonts/ITCAvantGardePro-Medium.otf) format('opentype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'AvantGardePro';
+  src: local('AvantGardePro'), url(./fonts/ITCAvantGardePro-Semibold.otf) format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'AvantGardePro';
+  src: local('AvantGardePro'), url(./fonts/ITCAvantGardePro-Bold.otf) format('opentype');
+  font-weight: 900;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'AvantGardePro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+:root {
+  --white: #ffffff;
+  --black: #000000;
+}
