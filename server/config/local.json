@@ -1,0 +1,6 @@
+{
+  "PORT": 4000,
+  "DB_NAME": "oneFraction",
+  "MONGO_HOST": "",
+  "ACCOUNTS_SECRET": "979083ce-a9b6-483d-a899-ea22d5b0a1dd"
+}

@@ -1,0 +1,47 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "watch": "nodemon -e ts -w ./src -x npm run watch:serve",
+    "watch:serve": "ts-node --inspect src/index.ts"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/config": "^0.0.34",
+    "@types/graphql": "^14.2.0",
+    "@types/mongoose": "^5.5.3",
+    "@types/node": "^12.0.4",
+    "husky": "^2.3.0",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.17.1",
+    "pretty-quick": "^1.11.0",
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1"
+  },
+  "dependencies": {
+    "@accounts/database-manager": "^0.15.0",
+    "@accounts/graphql-api": "^0.15.0",
+    "@accounts/mongo": "^0.15.0",
+    "@accounts/password": "^0.15.0",
+    "@accounts/server": "^0.15.0",
+    "@graphql-modules/core": "^0.7.5",
+    "apollo-server": "^2.6.1",
+    "apollo-server-express": "^2.6.1",
+    "config": "^3.1.0",
+    "graphql": "^14.3.1",
+    "graphql-toolkit": "^0.2.14",
+    "mongoose": "^5.5.12",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^0.17.4",
+    "typegoose": "^5.6.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
