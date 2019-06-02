@@ -1,24 +1,6 @@
-// app entry
-import * as React from 'react'
-import { AppRegistry, Platform, SafeAreaView, StyleSheet, Text } from 'react-native'
-import { Config } from './utils/Config'
-
-export const App = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <Text>DERP</Text>
-    </SafeAreaView>
-  )
-}
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    flex: 1,
-    justifyContent: 'center',
-  },
-})
+import { AppRegistry, Platform } from 'react-native'
+import App from './components/App'
+import { Config } from './utils/config'
 
 // register the app
 AppRegistry.registerComponent(Config.app.name, () => App)

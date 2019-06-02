@@ -55,3 +55,6 @@ buck-out/
 
 .jest/
 coverage/
+
+# ENV
+src/config/development.env.json
