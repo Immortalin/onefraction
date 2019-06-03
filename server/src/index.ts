@@ -1,7 +1,6 @@
 import 'reflect-metadata'
 import * as mongoose from 'mongoose'
-import * as express from 'express'
-import { ApolloServer, makeExecutableSchema } from 'apollo-server-express'
+import { ApolloServer, makeExecutableSchema } from 'apollo-server'
 import { buildSchema } from 'type-graphql'
 import { mergeResolvers, mergeTypeDefs, mergeSchemas } from 'graphql-toolkit'
 import { PORT, MONGO_HOST, DB_NAME } from './modules/common/consts'
@@ -45,9 +44,6 @@ import { TypegooseMiddleware } from './middleware/typegoose'
     playground: true,
   })
 
-  const app = express()
-  server.applyMiddleware({ app })
-
-  await app.listen({ port: PORT })
+  await server.listen({ port: PORT })
   console.log(`🚀 Server ready at localhost:${PORT}`)
 })()

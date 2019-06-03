@@ -20,10 +20,11 @@ const Label = styled(Text)`
 interface ButtonProps {
   children: string
   onPress: () => void
+  disabled?: boolean
 }
 
-const Button = ({ children, onPress }: ButtonProps) => (
-  <Wrapper onPress={onPress} activeOpacity={0.6}>
+const Button = ({ children, onPress, disabled }: ButtonProps) => (
+  <Wrapper onPress={onPress} activeOpacity={0.6} disabled={disabled}>
     <Label>{children}</Label>
   </Wrapper>
 )

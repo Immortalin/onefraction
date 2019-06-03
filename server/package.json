@@ -23,11 +23,11 @@
     "typescript": "^3.5.1"
   },
   "dependencies": {
-    "@accounts/database-manager": "^0.15.0",
-    "@accounts/graphql-api": "^0.15.0",
-    "@accounts/mongo": "^0.15.0",
-    "@accounts/password": "^0.15.0",
-    "@accounts/server": "^0.15.0",
+    "@accounts/database-manager": "^0.13.0",
+    "@accounts/graphql-api": "^0.13.0",
+    "@accounts/mongo": "^0.13.0",
+    "@accounts/password": "^0.13.0",
+    "@accounts/server": "^0.13.0",
     "@graphql-modules/core": "^0.7.5",
     "apollo-server": "^2.6.1",
     "apollo-server-express": "^2.6.1",

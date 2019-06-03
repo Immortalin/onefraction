@@ -11,8 +11,14 @@ interface UserContext {
   userState: UserState
   setUserState: (userState: UserState) => void
   getUser: () => void
-  signUp: (args: { firstName: string; lastName: string; email: string; password: string }) => void
-  logIn: (username: string, password: string) => void
+  signUp: (args: {
+    firstName: string
+    lastName: string
+    email: string
+    password: string
+    isLandlord: boolean
+  }) => void
+  logIn: (username: string, password: string, isLandlord: boolean) => Promise<void>
   logOut: () => void
 }
 
@@ -23,7 +29,7 @@ export const UserContext = React.createContext<UserContext>({
   setUserState: () => {},
   getUser: () => {},
   signUp: () => {},
-  logIn: () => {},
+  logIn: () => new Promise(() => {}),
   logOut: () => {},
 })
 
@@ -49,27 +55,30 @@ export const UserProvider: React.FunctionComponent<{}> = props => {
     await getUser()
   }
 
+  const signUp = async (args: {
+    firstName: string
+    lastName: string
+    email: string
+    password: string
+    isLandlord: boolean
+  }) => {
+    const { firstName, lastName, email, password } = args
+    await accountsPassword.createUser({
+      password,
+      email,
+      profile: { firstName, lastName }, // TODO
+    })
+
+    await logIn(email, password)
+  }
+
   return (
     <UserContext.Provider
       value={{
         userState,
         setUserState,
         getUser,
-        signUp: async (args: {
-          firstName: string
-          lastName: string
-          email: string
-          password: string
-        }) => {
-          const { firstName, lastName, email, password } = args
-          await accountsPassword.createUser({
-            password,
-            email,
-            profile: { firstName, lastName }, // TODO
-          })
-
-          await logIn(email, password)
-        },
+        signUp,
         logIn,
         logOut: async () => {
           await accountsGraphQL.logout()

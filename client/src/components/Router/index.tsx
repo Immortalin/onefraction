@@ -28,6 +28,8 @@ export default () => {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Login} />
+          <Route path="/landlord/login" component={Login} />
+          <Route path="/landlord/signup" component={Login} />
           <Route path="*" render={() => <Redirect to="/login" />} />
         </Switch>
       )}

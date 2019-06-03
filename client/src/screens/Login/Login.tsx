@@ -1,11 +1,34 @@
 import * as React from 'react'
-import { View, Image } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import styled from 'styled-components'
+import { Link } from '../../components/Router'
 import logo from '../../assets/images/logo-full.svg'
-import Button from '../../components/Button'
-import Input from '../../components/Input'
 import TabBox, { Tabs } from './components/TabBox'
 import { useUserContext } from '../../screens/Login/UserContext'
+import LoginForm from './components/LoginForm'
+import SignupForm from './components/SignupForm'
+
+const LinkToOtherLogin = (props: { isLandlord: boolean }) => (
+  <View style={{ marginTop: 50 }}>
+    {props.isLandlord ? (
+      <Text style={{ color: '#EDEEF3' }}>
+        Looking for{' '}
+        <Link to="/login">
+          <Text style={{ color: '#EDEEF3' }}>Tenant Login</Text>
+        </Link>
+        ?
+      </Text>
+    ) : (
+      <Text style={{ color: '#EDEEF3' }}>
+        Looking for{' '}
+        <Link to="/landlord/login">
+          <Text style={{ color: '#EDEEF3' }}>Landlord Login</Text>
+        </Link>
+        ?
+      </Text>
+    )}
+  </View>
+)
 
 const Wrapper = styled(View)`
   min-height: 100vh;
@@ -22,103 +45,54 @@ const LogoWrapper = styled(View)`
   left: 50px; */
 `
 
-const ContentWrapper = styled(View)`
+export const ContentWrapper = styled(View)`
   flex: 1;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
 `
 
-const FormWrapper = styled(View)`
+export const FormWrapper = styled(View)`
   flex: 1;
   justify-content: center;
   align-items: center;
 `
 
-const FormRowWrapper = styled(View)`
+export const FormRowWrapper = styled(View)`
   width: 90%;
   flex-direction: row;
   justify-content: space-around;
 `
 
 const Login = (props: any) => {
-  const path = props.location.pathname
+  const isLandlord = props.location.pathname.indexOf('/landlord') !== -1
+  const path = isLandlord
+    ? props.location.pathname.substring('/landlord'.length)
+    : props.location.pathname
   const { logIn, signUp } = useUserContext()
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
-  const [firstName, setFirstName] = React.useState('')
-  const [lastName, setLastName] = React.useState('')
   return (
     <Wrapper>
       <LogoWrapper>
         <Image source={{ uri: logo }} style={{ width: 180, height: 46 }} />
       </LogoWrapper>
-      <TabBox activeTab={path}>
+      <TabBox activeTab={path} isLandlord={isLandlord}>
         {path === Tabs.login ? (
-          <ContentWrapper>
-            <FormWrapper>
-              <Input
-                label="Email"
-                placeholder="you@example.com"
-                value={email}
-                onChangeText={setEmail}
-                style={{ marginBottom: 30 }}
-                textContentType="emailAddress"
-              />
-              <Input
-                label="Password"
-                placeholder="••••••••••"
-                value={password}
-                onChangeText={setPassword}
-                textContentType="password"
-                secure
-              />
-            </FormWrapper>
-            <Button onPress={() => logIn(email, password)}>LOGIN</Button>
-          </ContentWrapper>
+          <LoginForm
+            onSubmit={async (email, passowrd) => {
+              await logIn(email, passowrd, isLandlord)
+              props.history.push('/')
+            }}
+          />
         ) : (
-          <ContentWrapper>
-            <FormWrapper>
-              <FormRowWrapper>
-                <Input
-                  label="First Name"
-                  placeholder="John"
-                  value={firstName}
-                  onChangeText={setFirstName}
-                  style={{ width: '45%', marginBottom: 30 }}
-                />
-                <Input
-                  label="Last Name"
-                  placeholder="Doe"
-                  value={lastName}
-                  onChangeText={setLastName}
-                  style={{ width: '45%', marginBottom: 30 }}
-                />
-              </FormRowWrapper>
-              <FormRowWrapper>
-                <Input
-                  label="Email"
-                  placeholder="you@example.com"
-                  value={email}
-                  onChangeText={setEmail}
-                  textContentType="emailAddress"
-                  style={{ width: '45%', marginBottom: 30 }}
-                />
-                <Input
-                  label="Password"
-                  placeholder="••••••••••"
-                  value={password}
-                  onChangeText={setPassword}
-                  textContentType="newPassword"
-                  secure
-                  style={{ width: '45%', marginBottom: 30 }}
-                />
-              </FormRowWrapper>
-            </FormWrapper>
-            <Button onPress={() => signUp({ email, password, firstName, lastName })}>SIGNUP</Button>
-          </ContentWrapper>
+          <SignupForm
+            onSubmit={async args => {
+              await signUp({ ...args, isLandlord })
+              props.history.push('/')
+            }}
+          />
         )}
       </TabBox>
+      <LinkToOtherLogin isLandlord={isLandlord} />
     </Wrapper>
   )
 }

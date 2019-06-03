@@ -17,11 +17,12 @@
     "reset": "watchman watch-del-all; rm -rf /tmp/metro-bundler-cache-*; rm -rf ./android/build; rm -rf ./android/.gradle; rm -rf ./android/app/build; rm -rf ~/Library/Developer/Xcode/DerivedData; rm -rf /tmp/haste-map-react-native-packager-*; rm -rf ./ios/build; yarn install; pod install --project-directory=ios; react-native start --reset-cache"
   },
   "dependencies": {
-    "@accounts/apollo-link": "^0.15.0",
-    "@accounts/client": "^0.15.0",
-    "@accounts/client-password": "^0.15.0",
-    "@accounts/graphql-client": "^0.15.0",
+    "@accounts/apollo-link": "^0.13.0",
+    "@accounts/client": "^0.13.0",
+    "@accounts/client-password": "^0.13.0",
+    "@accounts/graphql-client": "^0.13.0",
     "apollo-boost": "^0.4.0",
+    "formik": "^1.5.7",
     "graphql": "^14.3.1",
     "graphql-tools": "^4.0.4",
     "react": "16.8.6",

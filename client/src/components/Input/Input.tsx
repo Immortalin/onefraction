@@ -2,7 +2,7 @@ import * as React from 'react'
 import { View, Text, TextInput, TextInputIOSProps } from 'react-native'
 import styled from 'styled-components'
 
-const Base = styled(TextInput)`
+const Base = styled(TextInput)<{ name?: string }>`
   background: #ffffff;
   padding: 12px 20px;
   box-shadow: 0 13px 27px 0 rgba(0, 0, 0, 0.04);
@@ -23,28 +23,34 @@ const Label = styled(Text)`
 
 interface InputProps {
   style?: any
+  name?: string
   label?: string
   placeholder?: string
   value?: string
   onChangeText: (text: string) => void
+  onBlur?: (e: any) => void
   secure?: boolean
   textContentType?: TextInputIOSProps['textContentType']
 }
 
 const Input = ({
   style,
+  name,
   label,
   placeholder,
   value,
   onChangeText,
+  onBlur,
   secure,
   textContentType,
 }: InputProps) => (
   <View style={style}>
     {label && <Label>{label}</Label>}
     <Base
+      name={name}
       value={value}
       onChangeText={onChangeText}
+      onBlur={onBlur}
       placeholder={placeholder}
       placeholderTextColor="rgba(67, 91, 126, 0.3)"
       textContentType={textContentType}

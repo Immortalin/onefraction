@@ -42,15 +42,16 @@ const TabText = styled(Text)`
 interface TabBoxProps {
   children: JSX.Element
   activeTab: Tabs
+  isLandlord: boolean
 }
 
-const TabBox = ({ children, activeTab }: TabBoxProps) => (
+const TabBox = ({ children, activeTab, isLandlord }: TabBoxProps) => (
   <Box maxWidth={600} width={'90%'} height={500}>
     <TabRow>
       <TabOuter
         left
         active={activeTab === Tabs.login}
-        to={Tabs.login}
+        to={`${isLandlord ? '/landlord' : ''}${Tabs.login}`}
         replace
         component={TouchableWithoutFeedback}
       >
@@ -61,7 +62,7 @@ const TabBox = ({ children, activeTab }: TabBoxProps) => (
       <TabOuter
         right
         active={activeTab === Tabs.signup}
-        to={Tabs.signup}
+        to={`${isLandlord ? '/landlord' : ''}${Tabs.signup}`}
         replace
         component={TouchableWithoutFeedback}
       >
