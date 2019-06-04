@@ -1,41 +1,19 @@
 import * as React from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Image } from 'react-native'
 import styled from 'styled-components'
-import { Link } from '../../components/Router'
 import logo from '../../assets/images/logo-full.svg'
 import TabBox, { Tabs } from './components/TabBox'
 import { useUserContext } from '../../screens/Login/UserContext'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
-
-const LinkToOtherLogin = (props: { isLandlord: boolean }) => (
-  <View style={{ marginTop: 50 }}>
-    {props.isLandlord ? (
-      <Text style={{ color: '#EDEEF3' }}>
-        Looking for{' '}
-        <Link to="/login">
-          <Text style={{ color: '#EDEEF3' }}>Tenant Login</Text>
-        </Link>
-        ?
-      </Text>
-    ) : (
-      <Text style={{ color: '#EDEEF3' }}>
-        Looking for{' '}
-        <Link to="/landlord/login">
-          <Text style={{ color: '#EDEEF3' }}>Landlord Login</Text>
-        </Link>
-        ?
-      </Text>
-    )}
-  </View>
-)
+import LinkToOtherLogin from './components/LinkToOtherLogin'
 
 const Wrapper = styled(View)`
   min-height: 100vh;
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-image: radial-gradient(50% 100%, #575b7e 0%, #201c3d 100%);
+  background-image: radial-gradient(50% 100%, var(--dark-blue) 0%, var(--very-dark-blue) 100%);
 `
 
 const LogoWrapper = styled(View)`

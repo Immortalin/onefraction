@@ -2,8 +2,12 @@ import * as React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 import styled from 'styled-components'
 
-const Wrapper = styled(TouchableOpacity)`
-  background: #575b7e;
+export enum Variants {
+  primary = 'primary',
+}
+
+const Wrapper = styled(TouchableOpacity)<{ variant?: Variants }>`
+  background: ${props => (props.variant === Variants.primary ? 'var(--cyan)' : 'var(--dark-blue)')};
   border-radius: 30px;
   text-align: center;
   box-shadow: 0 20px 30px 0 rgba(87, 91, 126, 0.3);
@@ -13,7 +17,7 @@ const Wrapper = styled(TouchableOpacity)`
 const Label = styled(Text)`
   font-size: 18px;
   font-weight: 900;
-  color: #ffffff;
+  color: var(--white);
   letter-spacing: -0.5px;
 `
 
@@ -21,10 +25,18 @@ interface ButtonProps {
   children: string
   onPress: () => void
   disabled?: boolean
+  variant?: Variants
+  style?: any
 }
 
-const Button = ({ children, onPress, disabled }: ButtonProps) => (
-  <Wrapper onPress={onPress} activeOpacity={0.6} disabled={disabled}>
+const Button = ({ children, onPress, disabled, variant, style }: ButtonProps) => (
+  <Wrapper
+    variant={variant}
+    onPress={onPress}
+    activeOpacity={0.6}
+    disabled={disabled}
+    style={style}
+  >
     <Label>{children}</Label>
   </Wrapper>
 )

@@ -39,6 +39,13 @@ body {
 }
 
 :root {
+  --dark-blue: #575b7e;
+  --very-dark-blue: #201c3d;
+  --light-grayish-blue: #edeef3;
+  --dark-moderate-blue-30: rgba(67, 91, 126, 0.3);
+  --cyan: #55b6ab;
   --white: #ffffff;
   --black: #000000;
+  --black-10: rgba(0, 0, 0, 0.1);
+  --black-20: rgba(0, 0, 0, 0.2);
 }
