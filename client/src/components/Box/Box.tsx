@@ -8,14 +8,12 @@ export enum Variants {
 
 interface BoxProps {
   width?: string
-  height?: number
   variant?: Variants
 }
 
 const Box = styled(View)<BoxProps>`
   flex: 1;
   width: ${props => props.width || '100%'};
-  height: ${props => props.height || 240}px;
   ${props => {
     switch (props.variant) {
       case Variants.login:

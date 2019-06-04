@@ -43,6 +43,7 @@ body {
   --dark-blue-40: rgba(87, 91, 126, 0.4);
   --very-dark-blue: #201c3d;
   --light-grayish-blue: #edeef3;
+  --dark-moderate-blue-10: rgba(67, 91, 126, 0.1);
   --dark-moderate-blue-30: rgba(67, 91, 126, 0.3);
   --desaturated-blue: #8594be;
   --cyan: #55b6ab;
@@ -51,4 +52,5 @@ body {
   --black: #000000;
   --black-10: rgba(0, 0, 0, 0.1);
   --black-20: rgba(0, 0, 0, 0.2);
+  --black-60: rgba(0, 0, 0, 0.4);
 }

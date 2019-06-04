@@ -1,6 +1,7 @@
 interface ENV {
   NODE_ENV: string
   GRAPHQL_URL: string
+  GOOGLE_MAPS_KEY: string
 }
 
 function getEnvVars(env = '', envVars: any): ENV {
@@ -23,3 +24,4 @@ const env = getEnvVars(process.env.NODE_ENV, {
 
 export const NODE_ENV = env.NODE_ENV
 export const GRAPHQL_URL = env.GRAPHQL_URL
+export const GOOGLE_MAPS_KEY = env.GOOGLE_MAPS_KEY

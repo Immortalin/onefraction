@@ -52,7 +52,7 @@ interface TabBoxProps {
 }
 
 const TabBox = ({ children, activeTab, isLandlord }: TabBoxProps) => (
-  <Box width={'600px'} height={500} variant={BoxVariants.login}>
+  <Box width={'600px'} style={{ height: 500 }} variant={BoxVariants.login}>
     <TabRow>
       <TabOuter
         side={Sides.left}

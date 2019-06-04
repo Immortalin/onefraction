@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { View, Text } from 'react-native'
 import styled from 'styled-components'
-import { Flex, Box as FlexBox } from '@rebass/grid'
 import { SidebarContext } from '../../components/MainLayout'
-import ContentBox, { Variants as ContentBoxVariants } from './components/ContentBox'
+import Dashboard from './components/Dashboard'
+import OnboardBox from './components/OnboardBox'
 
 const Wrapper = styled(View)<{ sidebarOpen: boolean }>`
   flex: 1;
@@ -26,43 +26,12 @@ const Title = styled(Text)`
 const Home = () => {
   const { sidebarOpen } = React.useContext(SidebarContext)
   const firstName = 'Jason'
+  const isOnboarded = false
   return (
     <Wrapper sidebarOpen={sidebarOpen}>
       <View style={{ width: '75%' }}>
         <Title>{`Hello, ${firstName}!`}</Title>
-        <Flex
-          width={1}
-          flexDirection="row"
-          justifyContent="space-between"
-          alignItems="center"
-          mb={50}
-        >
-          <FlexBox width={1} pr="15px">
-            <ContentBox
-              title="4.8"
-              subtitle="Your Renter Rating"
-              variant={ContentBoxVariants.rating}
-            />
-          </FlexBox>
-          <FlexBox width={1} px="15px">
-            <ContentBox title="$8420" subtitle="Total Savings" />
-          </FlexBox>
-          <FlexBox width={1} pl="15px">
-            <ContentBox title="$4210" subtitle="Savings from Landlord" />
-          </FlexBox>
-        </Flex>
-        <Flex width={1} flexDirection="row" justifyContent="space-between" alignItems="center">
-          <FlexBox width={2 / 3} pr="10px">
-            <ContentBox title="4.8" subtitle="Your Renter Rating" />
-          </FlexBox>
-          <FlexBox width={1 / 3} pl="15px">
-            <ContentBox
-              title="$262"
-              subtitle="Earned Interest"
-              variant={ContentBoxVariants.cyanTitle}
-            />
-          </FlexBox>
-        </Flex>
+        {isOnboarded ? <Dashboard /> : <OnboardBox />}
       </View>
     </Wrapper>
   )

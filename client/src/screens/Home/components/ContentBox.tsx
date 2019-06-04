@@ -83,7 +83,7 @@ interface ContentBoxProps {
 
 const ContentBox = ({ variant, title, subtitle }: ContentBoxProps) => {
   return (
-    <Box variant={getBoxVariant(variant)}>
+    <Box variant={getBoxVariant(variant)} style={{ height: 240 }}>
       <Wrapper>
         {variant === Variants.rating && <StarIcon source={{ uri: starIcon }} />}
         <Title variant={getTitleVariant(variant)}>{title}</Title>

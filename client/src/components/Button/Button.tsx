@@ -6,7 +6,7 @@ export enum Variants {
   primary = 'primary',
 }
 
-const Wrapper = styled(TouchableOpacity)<{ variant?: Variants }>`
+const Wrapper = styled(TouchableOpacity)<{ variant?: Variants; disabled?: boolean }>`
   background: ${props => {
     switch (props.variant) {
       case Variants.primary:
@@ -19,6 +19,7 @@ const Wrapper = styled(TouchableOpacity)<{ variant?: Variants }>`
   text-align: center;
   box-shadow: 0 20px 30px 0 rgba(87, 91, 126, 0.3);
   padding: 17px 45px;
+  ${props => (props.disabled ? 'opacity: 0.6;' : '')}
 `
 
 const Label = styled(Text)`
