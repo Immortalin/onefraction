@@ -6,6 +6,12 @@ import starIcon from '../../../assets/images/icons/star.svg'
 
 export enum Variants {
   rating = 'rating',
+  cyanTitle = 'greenTitle',
+}
+
+enum TitleVariants {
+  light = 'light',
+  cyan = 'cyan',
 }
 
 const getBoxVariant = (variant?: Variants) => {
@@ -17,17 +23,37 @@ const getBoxVariant = (variant?: Variants) => {
   }
 }
 
+const getTitleVariant = (variant?: Variants) => {
+  switch (variant) {
+    case Variants.rating:
+      return TitleVariants.light
+    case Variants.cyanTitle:
+      return TitleVariants.cyan
+    default:
+      return undefined
+  }
+}
+
 const Wrapper = styled(View)`
   flex: 1;
   align-items: center;
   justify-content: center;
 `
 
-const Title = styled(Text)<{ light?: boolean }>`
+const Title = styled(Text)<{ variant?: TitleVariants }>`
   font-family: AvantGardePro;
   font-weight: 900;
   font-size: 60px;
-  color: ${props => (props.light ? 'var(--white)' : 'var(--dark-blue)')};
+  color: ${props => {
+    switch (props.variant) {
+      case TitleVariants.light:
+        return 'var(--white)'
+      case TitleVariants.cyan:
+        return 'var(--cyan)'
+      default:
+        return 'var(--dark-blue)'
+    }
+  }};
   letter-spacing: -2.73px;
   text-align: center;
 `
@@ -60,7 +86,7 @@ const ContentBox = ({ variant, title, subtitle }: ContentBoxProps) => {
     <Box variant={getBoxVariant(variant)}>
       <Wrapper>
         {variant === Variants.rating && <StarIcon source={{ uri: starIcon }} />}
-        <Title light={variant === Variants.rating}>{title}</Title>
+        <Title variant={getTitleVariant(variant)}>{title}</Title>
         <Subtitle light={variant === Variants.rating}>{subtitle}</Subtitle>
       </Wrapper>
     </Box>

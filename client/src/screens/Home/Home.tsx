@@ -68,7 +68,11 @@ const Home = () => {
               <ContentBox title="4.8" subtitle="Your Renter Rating" />
             </FlexBox>
             <FlexBox width={1 / 3} pl="15px">
-              <ContentBox title="$262" subtitle="Earned Interest" />
+              <ContentBox
+                title="$262"
+                subtitle="Earned Interest"
+                variant={ContentBoxVariants.cyanTitle}
+              />
             </FlexBox>
           </Flex>
         </View>
