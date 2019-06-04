@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Image, TouchableOpacity } from 'react-native'
 import styled from 'styled-components'
-import menuIcon from '../../../assets/images/icons/menu.svg'
+import menuIcon from '../../assets/images/icons/menu.svg'
 
 const Wrapper = styled(TouchableOpacity)`
   padding: 10px;

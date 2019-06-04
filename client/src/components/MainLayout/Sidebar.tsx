@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { View, Image } from 'react-native'
 import styled from 'styled-components'
-import logoSmall from '../../../assets/images/logo-small.svg'
-import { Link } from '../../../components/Router'
-import Button, { Variants as ButtonVariants } from '../../../components/Button'
+import logoSmall from '../../assets/images/logo-small.svg'
+import { Link } from '../Router'
+import Button, { Variants as ButtonVariants } from '../Button'
 import SidebarItem from './SidebarItem'
-import dashbaordIcon from '../../../assets/images/icons/dashboard.svg'
-import rewardsIcon from '../../../assets/images/icons/rewards.svg'
-import settingsIcon from '../../../assets/images/icons/settings.svg'
+import dashbaordIcon from '../../assets/images/icons/dashboard.svg'
+import rewardsIcon from '../../assets/images/icons/rewards.svg'
+import settingsIcon from '../../assets/images/icons/settings.svg'
 
 const Wrapper = styled(View)<{ open: boolean }>`
   width: 300px;

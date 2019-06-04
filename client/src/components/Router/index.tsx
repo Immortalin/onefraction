@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Router, Route, Switch, Redirect, Link } from './Router'
+import MainLayout from '../MainLayout'
 import Login from '../../screens/Login'
 import Home from '../../screens/Home'
 import { useUserContext } from '../../screens/Login/UserContext'
@@ -13,16 +14,18 @@ export default () => {
   return (
     <Router>
       {!userState.user ? (
-        <Route
-          path="/"
-          render={() => (
-            <Switch>
-              <Route path="/" exact component={Home} />
-              {/* <Route path="/policies" component={Policies} /> */}
-              <Route path="*" render={() => <Redirect to="/" />} />
-            </Switch>
-          )}
-        />
+        <MainLayout>
+          <Route
+            path="/"
+            render={() => (
+              <Switch>
+                <Route path="/" exact component={Home} />
+                {/* <Route path="/policies" component={Policies} /> */}
+                <Route path="*" render={() => <Redirect to="/" />} />
+              </Switch>
+            )}
+          />
+        </MainLayout>
       ) : (
         <Switch>
           <Route path="/login" component={Login} />

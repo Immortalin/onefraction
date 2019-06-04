@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { View, Text, Image } from 'react-native'
 import styled from 'styled-components'
-import { Link } from '../../../components/Router'
+import { Link } from '../Router'
 
 const Wrapper = styled(View)`
   flex-direction: row;
