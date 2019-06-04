@@ -53,23 +53,25 @@ const Login = (props: any) => {
       <LogoWrapper>
         <Image source={{ uri: logo }} style={{ width: 180, height: 46 }} />
       </LogoWrapper>
-      <TabBox activeTab={path} isLandlord={isLandlord}>
-        {path === Tabs.login ? (
-          <LoginForm
-            onSubmit={async (email, passowrd) => {
-              await logIn(email, passowrd, isLandlord)
-              props.history.push('/')
-            }}
-          />
-        ) : (
-          <SignupForm
-            onSubmit={async args => {
-              await signUp({ ...args, isLandlord })
-              props.history.push('/')
-            }}
-          />
-        )}
-      </TabBox>
+      <View style={{ width: 600, height: 500 }}>
+        <TabBox activeTab={path} isLandlord={isLandlord}>
+          {path === Tabs.login ? (
+            <LoginForm
+              onSubmit={async (email, passowrd) => {
+                await logIn(email, passowrd, isLandlord)
+                props.history.push('/')
+              }}
+            />
+          ) : (
+            <SignupForm
+              onSubmit={async args => {
+                await signUp({ ...args, isLandlord })
+                props.history.push('/')
+              }}
+            />
+          )}
+        </TabBox>
+      </View>
       <LinkToOtherLogin isLandlord={isLandlord} />
     </Wrapper>
   )

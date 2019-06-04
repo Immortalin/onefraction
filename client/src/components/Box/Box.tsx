@@ -9,7 +9,6 @@ export enum Variants {
 interface BoxProps {
   width?: string
   height?: number
-  maxWidth?: number
   variant?: Variants
 }
 
@@ -20,11 +19,11 @@ const Box = styled(View)<BoxProps>`
   ${props => {
     switch (props.variant) {
       case Variants.login:
-        return 'background: var(--light-grayish-blue)'
+        return 'background-color: var(--light-grayish-blue)'
       case Variants.accent:
         return 'background-image: linear-gradient(-180deg, var(--desaturated-blue) 0%, var(--dark-blue) 100%)'
       default:
-        return 'background: var(--white)'
+        return 'background-color: var(--white)'
     }
   }};
   box-shadow: ${props => {

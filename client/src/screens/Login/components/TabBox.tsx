@@ -2,7 +2,7 @@ import * as React from 'react'
 import { View, Text, TouchableWithoutFeedback } from 'react-native'
 import styled from 'styled-components'
 import { Link } from '../../../components/Router'
-import Box from '../../../components/Box'
+import Box, { Variants as BoxVariants } from '../../../components/Box'
 
 export enum Tabs {
   login = '/login',
@@ -52,7 +52,7 @@ interface TabBoxProps {
 }
 
 const TabBox = ({ children, activeTab, isLandlord }: TabBoxProps) => (
-  <Box maxWidth={600} width={'90%'} height={500}>
+  <Box width={'600px'} height={500} variant={BoxVariants.login}>
     <TabRow>
       <TabOuter
         side={Sides.left}
