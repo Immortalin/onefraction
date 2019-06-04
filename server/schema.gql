@@ -8,6 +8,11 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
+type Profile {
+  firstName: String!
+  lastName: String!
+}
+
 type Query {
   me: User!
   getUser(userId: ID!): User!
@@ -20,14 +25,8 @@ enum Role {
 
 type User {
   _id: ID!
-  sessionId: String!
+  profile: Profile!
   roles: [Role!]!
-  phoneNumber: String!
-  username: String
-  ethAddress: String
-  smsToken: String
-  isBlocked: Boolean
-  isPhoneVerified: Boolean
   isOnboarded: Boolean
   createdAt: DateTime!
   updatedAt: DateTime!

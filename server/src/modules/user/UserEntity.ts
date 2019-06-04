@@ -2,6 +2,18 @@ import { prop, Typegoose } from 'typegoose'
 import { ObjectType, Field, ID } from 'type-graphql'
 import { ObjectId } from 'mongodb'
 import { Role } from './consts'
+import { PromiseProvider } from 'mongoose'
+
+@ObjectType()
+class Profile {
+  @prop()
+  @Field()
+  firstName: string
+
+  @prop()
+  @Field()
+  lastName: string
+}
 
 @ObjectType()
 export class User extends Typegoose {
@@ -9,36 +21,12 @@ export class User extends Typegoose {
   readonly _id: ObjectId
 
   @prop()
-  @Field()
-  sessionId?: string
+  @Field(type => Profile)
+  profile: Profile
 
   @prop({ required: true, enum: Role })
   @Field(type => Role)
   roles: Role[]
-
-  @prop({ required: true })
-  @Field()
-  phoneNumber: string
-
-  @prop({ lowercase: true })
-  @Field({ nullable: true })
-  username?: string
-
-  @prop({ lowercase: true })
-  @Field({ nullable: true })
-  ethAddress?: string
-
-  @prop()
-  @Field({ nullable: true })
-  smsToken?: string
-
-  @prop()
-  @Field({ nullable: true })
-  isBlocked?: boolean
-
-  @prop()
-  @Field({ nullable: true })
-  isPhoneVerified?: boolean
 
   @prop()
   @Field({ nullable: true })
