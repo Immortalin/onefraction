@@ -1,3 +1,5 @@
+import gql from 'graphql-tag'
+import * as ReactApolloHooks from 'react-apollo-hooks'
 export type Maybe<T> = T | null
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -117,6 +119,12 @@ export type MutationAuthenticateArgs = {
   params: AuthenticateParamsInput
 }
 
+export type Profile = {
+  __typename?: 'Profile'
+  firstName: Scalars['String']
+  lastName: Scalars['String']
+}
+
 export type Query = {
   __typename?: 'Query'
   twoFactorSecret?: Maybe<TwoFactorSecretKey>
@@ -164,13 +172,8 @@ export type User = {
   emails?: Maybe<Array<EmailRecord>>
   username?: Maybe<Scalars['String']>
   _id: Scalars['ID']
-  sessionId: Scalars['String']
+  profile: Profile
   roles: Array<Role>
-  phoneNumber: Scalars['String']
-  ethAddress?: Maybe<Scalars['String']>
-  smsToken?: Maybe<Scalars['String']>
-  isBlocked?: Maybe<Scalars['Boolean']>
-  isPhoneVerified?: Maybe<Scalars['Boolean']>
   isOnboarded?: Maybe<Scalars['Boolean']>
   createdAt: Scalars['DateTime']
   updatedAt: Scalars['DateTime']
@@ -180,4 +183,31 @@ export type UserInput = {
   id?: Maybe<Scalars['ID']>
   email?: Maybe<Scalars['String']>
   username?: Maybe<Scalars['String']>
+}
+export type MeQueryVariables = {}
+
+export type MeQuery = { __typename?: 'Query' } & {
+  me: { __typename?: 'User' } & Pick<User, '_id'> & {
+      profile: { __typename?: 'Profile' } & Pick<Profile, 'firstName' | 'lastName'>
+      emails: Maybe<Array<{ __typename?: 'EmailRecord' } & Pick<EmailRecord, 'address'>>>
+    }
+}
+
+export const MeDocument = gql`
+  query Me {
+    me {
+      _id
+      profile {
+        firstName
+        lastName
+      }
+      emails {
+        address
+      }
+    }
+  }
+`
+
+export function useMeQuery(baseOptions?: ReactApolloHooks.QueryHookOptions<MeQueryVariables>) {
+  return ReactApolloHooks.useQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions)
 }

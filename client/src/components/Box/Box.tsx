@@ -1,18 +1,42 @@
 import { View } from 'react-native'
 import styled from 'styled-components'
 
+export enum Variants {
+  login = 'login',
+  accent = 'accent',
+}
+
 interface BoxProps {
   width?: string
   height?: number
   maxWidth?: number
+  variant?: Variants
 }
 
 const Box = styled(View)<BoxProps>`
+  flex: 1;
   width: ${props => props.width || '100%'};
-  max-width: ${props => props.maxWidth || 600}px;
-  height: ${props => props.height || 500}px;
-  background: var(--light-grayish-blue);
-  box-shadow: 0 100px 100px 0 var(--black-20);
+  height: ${props => props.height || 240}px;
+  ${props => {
+    switch (props.variant) {
+      case Variants.login:
+        return 'background: var(--light-grayish-blue)'
+      case Variants.accent:
+        return 'background-image: linear-gradient(-180deg, var(--desaturated-blue) 0%, var(--dark-blue) 100%)'
+      default:
+        return 'background: var(--white)'
+    }
+  }};
+  box-shadow: ${props => {
+    switch (props.variant) {
+      case Variants.login:
+        return '0 100px 100px 0 var(--black-20)'
+      case Variants.accent:
+        return '0 40px 80px 0 var(--dark-blue-40)'
+      default:
+        return '0 40px 80px 0 var(--black-10)'
+    }
+  }};
   border-radius: 10px;
 `
 

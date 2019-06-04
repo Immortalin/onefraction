@@ -7,7 +7,14 @@ export enum Variants {
 }
 
 const Wrapper = styled(TouchableOpacity)<{ variant?: Variants }>`
-  background: ${props => (props.variant === Variants.primary ? 'var(--cyan)' : 'var(--dark-blue)')};
+  background: ${props => {
+    switch (props.variant) {
+      case Variants.primary:
+        return 'var(--cyan)'
+      default:
+        return 'var(--dark-blue)'
+    }
+  }};
   border-radius: 30px;
   text-align: center;
   box-shadow: 0 20px 30px 0 rgba(87, 91, 126, 0.3);
@@ -15,6 +22,7 @@ const Wrapper = styled(TouchableOpacity)<{ variant?: Variants }>`
 `
 
 const Label = styled(Text)`
+  font-family: AvantGardePro;
   font-size: 18px;
   font-weight: 900;
   color: var(--white);

@@ -31,7 +31,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'AvantGardePro', sans-serif;
+  font-family: AvantGardePro, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
@@ -40,10 +40,13 @@ body {
 
 :root {
   --dark-blue: #575b7e;
+  --dark-blue-40: rgba(87, 91, 126, 0.4);
   --very-dark-blue: #201c3d;
   --light-grayish-blue: #edeef3;
   --dark-moderate-blue-30: rgba(67, 91, 126, 0.3);
+  --desaturated-blue: #8594be;
   --cyan: #55b6ab;
+  --gray: #a2a2a2;
   --white: #ffffff;
   --black: #000000;
   --black-10: rgba(0, 0, 0, 0.1);

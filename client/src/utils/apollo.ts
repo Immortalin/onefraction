@@ -23,11 +23,11 @@ export const graphQLApolloClient = new ApolloClient({
 export const accountsGraphQL = new AccountsGraphQLClient({
   graphQLClient: graphQLApolloClient,
 })
-export const accounts = new AccountsClient({}, accountsGraphQL)
-export const accountsPassword = new AccountsClientPassword(accounts)
+export const accountsClient = new AccountsClient({}, accountsGraphQL)
+export const accountsPassword = new AccountsClientPassword(accountsClient)
 
 // regular apollo client
-const authLink = accountsLink(() => accounts)
+const authLink = accountsLink(() => accountsClient)
 
 export const client = new ApolloClient({
   link: ApolloLink.from([authLink, httpLink]),

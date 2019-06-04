@@ -14,6 +14,7 @@ const Base = styled(TextInput)<{ name?: string }>`
 `
 
 const Label = styled(Text)`
+  font-family: AvantGardePro;
   margin-bottom: 8px;
   font-size: 13.33px;
   font-weight: 900;

@@ -38,6 +38,7 @@ const TabInner = styled(View)`
 `
 
 const TabText = styled(Text)`
+  font-family: AvantGardePro;
   font-size: 20px;
   font-weight: 900;
   color: var(--dark-blue);

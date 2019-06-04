@@ -1,19 +1,18 @@
 import * as React from 'react'
-import { Text } from 'react-native'
 import { Router, Route, Switch, Redirect, Link } from './Router'
 import Login from '../../screens/Login'
+import Home from '../../screens/Home'
 import { useUserContext } from '../../screens/Login/UserContext'
-
-const Home = () => <Text>Home</Text>
 
 export default () => {
   const { userState, getUser } = useUserContext()
-  React.useEffect(() => {
-    getUser()
-  }, [userState.user && userState.user.id])
+  React.useEffect(getUser, [userState.user && userState.user.id])
+
+  console.log('userState', userState)
+
   return (
     <Router>
-      {userState.loggingIn ? null : userState.user ? (
+      {!userState.user ? (
         <Route
           path="/"
           render={() => (

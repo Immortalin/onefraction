@@ -1,25 +1,31 @@
 import * as React from 'react'
 import { View, Text } from 'react-native'
+import styled from 'styled-components'
 import { Link } from '../../../components/Router'
+
+const Label = styled(Text)`
+  font-family: AvantGardePro;
+  color: var(--light-grayish-blue);
+`
 
 const LinkToOtherLogin = (props: { isLandlord: boolean }) => (
   <View style={{ marginTop: 50 }}>
     {props.isLandlord ? (
-      <Text style={{ color: 'var(--light-grayish-blue)' }}>
+      <Label>
         Looking for{' '}
         <Link to="/login">
-          <Text style={{ color: 'var(--light-grayish-blue)' }}>tenant login</Text>
+          <Label>tenant login</Label>
         </Link>
         ?
-      </Text>
+      </Label>
     ) : (
-      <Text style={{ color: 'var(--light-grayish-blue)' }}>
+      <Label>
         Looking for{' '}
         <Link to="/landlord/login">
-          <Text style={{ color: 'var(--light-grayish-blue)' }}>landlord login</Text>
+          <Label>landlord login</Label>
         </Link>
         ?
-      </Text>
+      </Label>
     )}
   </View>
 )
