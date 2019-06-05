@@ -1,12 +1,5 @@
 import * as React from 'react'
-import {
-  View,
-  Text,
-  TextInput,
-  TextInputIOSProps,
-  NativeSyntheticEvent,
-  TextInputKeyPressEventData,
-} from 'react-native'
+import { View, Text, TextInput, TextInputProps } from 'react-native'
 import styled, { css } from 'styled-components'
 
 const Base = styled(TextInput)<{
@@ -25,6 +18,7 @@ const Base = styled(TextInput)<{
   font-weight: 900;
   color: var(--dark-blue);
   letter-spacing: -0.91px;
+  outline: none;
   transition: box-shadow 0.3s ease;
 
   ${props =>
@@ -45,63 +39,46 @@ const Label = styled(Text)`
   letter-spacing: -0.61px;
 `
 
-interface InputProps {
+interface InputProps extends TextInputProps {
   style?: any
   inputStyle?: any
   name?: string
   label?: string
-  placeholder?: string
-  value?: string
-  onChangeText: (text: string) => void
-  onBlur?: (e: any) => void
-  onFocus?: (e: any) => void
-  onKeyPress?: (e: NativeSyntheticEvent<TextInputKeyPressEventData>) => void
   secure?: boolean
-  focused?: boolean
   focusable?: boolean
-  textContentType?: TextInputIOSProps['textContentType']
 }
 
 const Input = React.forwardRef(
-  (
-    {
-      style,
-      inputStyle,
-      name,
-      label,
-      placeholder,
-      value,
-      onChangeText,
-      onBlur,
-      onFocus,
-      onKeyPress,
-      secure,
-      focused,
-      focusable,
-      textContentType,
-    }: InputProps,
-    ref
-  ) => (
-    <View style={style}>
-      {label && <Label>{label}</Label>}
-      <Base
-        innerRef={ref}
-        style={inputStyle}
-        name={name}
-        value={value}
-        onChangeText={onChangeText}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        onKeyPress={onKeyPress}
-        placeholder={placeholder}
-        placeholderTextColor="var(--dark-moderate-blue-30)"
-        textContentType={textContentType}
-        secureTextEntry={secure}
-        focused={focused}
-        focusable={focusable}
-      />
-    </View>
-  )
+  ({ style, inputStyle, name, label, secure, focusable, ...props }: InputProps, ref) => {
+    const [focused, setFocused] = React.useState(false)
+    return (
+      <View style={style}>
+        {label && <Label>{label}</Label>}
+        <Base
+          {...props}
+          innerRef={ref}
+          style={inputStyle}
+          name={name}
+          placeholderTextColor="var(--dark-moderate-blue-30)"
+          secureTextEntry={secure}
+          focused={focused}
+          focusable={focusable}
+          onFocus={e => {
+            setFocused(true)
+            if (props.onFocus) {
+              props.onFocus(e)
+            }
+          }}
+          onBlur={e => {
+            setFocused(false)
+            if (props.onBlur) {
+              props.onBlur(e)
+            }
+          }}
+        />
+      </View>
+    )
+  }
 )
 
 export default Input

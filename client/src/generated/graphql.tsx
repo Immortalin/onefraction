@@ -187,7 +187,7 @@ export type UserInput = {
 export type MeQueryVariables = {}
 
 export type MeQuery = { __typename?: 'Query' } & {
-  me: { __typename?: 'User' } & Pick<User, '_id'> & {
+  me: { __typename?: 'User' } & Pick<User, '_id' | 'isOnboarded'> & {
       profile: { __typename?: 'Profile' } & Pick<Profile, 'firstName' | 'lastName'>
       emails: Maybe<Array<{ __typename?: 'EmailRecord' } & Pick<EmailRecord, 'address'>>>
     }
@@ -204,6 +204,7 @@ export const MeDocument = gql`
       emails {
         address
       }
+      isOnboarded
     }
   }
 `

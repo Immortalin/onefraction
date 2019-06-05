@@ -94,7 +94,7 @@ const SignupForm = ({ onSubmit }: SignupFormProps) => (
             />
           </FormRowWrapper>
         </FormWrapper>
-        <Button onPress={handleSubmit} disabled={isSubmitting}>
+        <Button onPress={() => handleSubmit()} disabled={isSubmitting}>
           SIGNUP
         </Button>
       </ContentWrapper>

@@ -1,9 +1,27 @@
 import * as React from 'react'
 import { View, Text } from 'react-native'
+import gql from 'graphql-tag'
 import styled from 'styled-components'
+import { useMeQuery } from '../../generated/graphql'
 import { SidebarContext } from '../../components/MainLayout'
 import Dashboard from './components/Dashboard'
-import OnboardBox from './components/OnboardBox'
+import Onboard from './components/Onboard'
+
+export const GET_USER = gql`
+  query Me {
+    me {
+      _id
+      profile {
+        firstName
+        lastName
+      }
+      emails {
+        address
+      }
+      isOnboarded
+    }
+  }
+`
 
 const Wrapper = styled(View)<{ sidebarOpen: boolean }>`
   flex: 1;
@@ -24,15 +42,18 @@ const Title = styled(Text)`
 `
 
 const Home = () => {
+  const { data, loading } = useMeQuery()
   const { sidebarOpen } = React.useContext(SidebarContext)
-  const firstName = 'Jason'
-  const isOnboarded = false
+  const firstName = data && data.me && data.me.profile.firstName
+  const isOnboarded = data && data.me && data.me.isOnboarded
   return (
     <Wrapper sidebarOpen={sidebarOpen}>
-      <View style={{ width: '75%' }}>
-        <Title>{`Hello, ${firstName}!`}</Title>
-        {isOnboarded ? <Dashboard /> : <OnboardBox />}
-      </View>
+      {loading ? null : (
+        <View style={{ width: '75%', height: '75%', overflow: 'hidden' }}>
+          <Title>{`Hello, ${firstName}!`}</Title>
+          {isOnboarded ? <Dashboard /> : <Onboard />}
+        </View>
+      )}
     </Wrapper>
   )
 }

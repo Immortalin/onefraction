@@ -13,7 +13,9 @@ export default () => {
     return () => {}
   }, [userState.user && userState.user.id])
 
-  console.log('userState', userState)
+  if (!userState.user && userState.loggingIn) {
+    return null
+  }
 
   return (
     <Router>

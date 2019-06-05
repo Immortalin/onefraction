@@ -36,6 +36,7 @@
     "react-router-dom": "^5.0.0",
     "react-router-native": "^5.0.0",
     "react-scripts": "3.0.0",
+    "react-spring": "^8.0.21",
     "styled-components": "^4.2.1"
   },
   "devDependencies": {

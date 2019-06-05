@@ -67,7 +67,7 @@ const LoginForm = ({ onSubmit }: LoginFormProps) => (
             secure
           />
         </FormWrapper>
-        <Button onPress={handleSubmit} disabled={isSubmitting}>
+        <Button onPress={() => handleSubmit()} disabled={isSubmitting}>
           LOGIN
         </Button>
       </ContentWrapper>

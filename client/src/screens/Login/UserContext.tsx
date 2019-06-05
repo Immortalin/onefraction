@@ -1,22 +1,6 @@
 import * as React from 'react'
-import gql from 'graphql-tag'
 import { User } from '../../generated/graphql'
 import { accountsGraphQL, accountsPassword } from '../../utils/apollo'
-
-export const GET_USER = gql`
-  query Me {
-    me {
-      _id
-      profile {
-        firstName
-        lastName
-      }
-      emails {
-        address
-      }
-    }
-  }
-`
 
 interface UserState {
   user?: User
@@ -51,9 +35,6 @@ export const UserContext = React.createContext<UserContext>({
 
 export const UserProvider: React.FunctionComponent<{}> = props => {
   const [userState, setUserState] = React.useState<UserState>(initialState)
-  // React.useEffect(() => {
-  //   accountsClient.refreshSession()
-  // }, [userState.user && userState.user.id])
 
   const getUser = async () => {
     let user: any = null
