@@ -32,10 +32,4 @@ export default class UserResolver {
       return await this.service.findOneById(ctx.userId)
     }
   }
-
-  @Query(returns => User)
-  @Authorized()
-  async getUser(@Arg('userId', returns => ID) userId: string) {
-    return await this.service.findOneById(userId)
-  }
 }

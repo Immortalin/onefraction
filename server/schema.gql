@@ -15,7 +15,6 @@ type Profile {
 
 type Query {
   me: User!
-  getUser(userId: ID!): User!
 }
 
 enum Role {

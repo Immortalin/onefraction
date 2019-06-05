@@ -1,6 +1,6 @@
 import * as React from 'react'
 import gql from 'graphql-tag'
-import { User, useMeQuery } from '../../generated/graphql'
+import { User } from '../../generated/graphql'
 import { accountsGraphQL, accountsPassword } from '../../utils/apollo'
 
 export const GET_USER = gql`
@@ -34,7 +34,7 @@ interface UserContext {
     password: string
     isLandlord: boolean
   }) => void
-  logIn: (username: string, password: string, isLandlord: boolean) => Promise<void>
+  logIn: (email: string, password: string, isLandlord: boolean) => void
   logOut: () => void
 }
 
@@ -45,12 +45,11 @@ export const UserContext = React.createContext<UserContext>({
   setUserState: () => {},
   getUser: () => {},
   signUp: () => {},
-  logIn: () => new Promise(() => {}),
+  logIn: () => {},
   logOut: () => {},
 })
 
 export const UserProvider: React.FunctionComponent<{}> = props => {
-  const me = useMeQuery()
   const [userState, setUserState] = React.useState<UserState>(initialState)
   // React.useEffect(() => {
   //   accountsClient.refreshSession()
@@ -58,13 +57,10 @@ export const UserProvider: React.FunctionComponent<{}> = props => {
 
   const getUser = async () => {
     let user: any = null
-    user = await accountsGraphQL.getUser()
-    console.log('tokens', user)
 
     try {
-      await me.refetch()
-      console.log('MEEEE', me.data)
-      user = me && me.data && me.data.me
+      user = await accountsGraphQL.getUser()
+      console.log('!!!user', user)
     } catch (error) {
       console.error('There was an error logging in.', error)
     } finally {

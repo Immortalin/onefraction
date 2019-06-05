@@ -7,13 +7,17 @@ import { useUserContext } from '../../screens/Login/UserContext'
 
 export default () => {
   const { userState, getUser } = useUserContext()
-  React.useEffect(getUser, [userState.user && userState.user.id])
+
+  React.useEffect(() => {
+    getUser()
+    return () => {}
+  }, [userState.user && userState.user.id])
 
   console.log('userState', userState)
 
   return (
     <Router>
-      {!userState.user ? (
+      {userState.user ? (
         <MainLayout>
           <Route
             path="/"
