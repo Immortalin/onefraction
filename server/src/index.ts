@@ -8,10 +8,10 @@ import UserResolver from './modules/user/UserResolver'
 import { authChecker } from './modules/user/authChecker'
 import { setUpAccounts, userTypeDefs } from './modules/user/accounts'
 import { TypegooseMiddleware } from './middleware/typegoose'
-
 ;(async () => {
   const mongooseConnection = await mongoose.connect(
-    `mongodb://${MONGO_HOST || 'localhost'}:27017/${DB_NAME}`
+    `mongodb://${MONGO_HOST || 'localhost'}:27017/${DB_NAME}`,
+    { useNewUrlParser: true }
   )
   const { accountsGraphQL, accountsServer } = setUpAccounts(mongooseConnection.connection)
 
