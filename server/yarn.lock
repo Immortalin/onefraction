@@ -828,6 +828,13 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
+"@types/form-data@*":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@types/form-data/-/form-data-2.2.1.tgz#ee2b3b8eaa11c0938289953606b745b738c54b1e"
+  integrity sha512-JAMFhOaHIciYVh8fb5/83nmuO/AHwmto+Hq7a9y8FzLDcC1KCU344XDOMEmahnrTFlHjgh4L0WJFczNIX2GxnQ==
+  dependencies:
+    "@types/node" "*"
+
 "@types/glob@^7.1.1":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.1.tgz#aa59a1c6e3fbc421e07ccd31a944c30eba521575"
@@ -890,6 +897,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.4.tgz#46832183115c904410c275e34cf9403992999c32"
   integrity sha512-j8YL2C0fXq7IONwl/Ud5Kt0PeXw22zGERt+HSSnwbKOJVsAGkEz3sFCYwaF9IOuoG1HOtE0vKCj6sXF7Q0+Vaw==
 
+"@types/node@9.x":
+  version "9.6.49"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.49.tgz#ab4df6e505db088882c8ce5417ae0bc8cbb7a8a6"
+  integrity sha512-YY0Okyn4QXC4ugJI+Kng5iWjK8A6eIHiQVaGIhJkyn0YL6Iqo0E0tBC8BuhvYcBK87vykBijM5FtMnCqaa5anA==
+
 "@types/node@^10.1.0":
   version "10.14.8"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.14.8.tgz#fe444203ecef1162348cd6deb76c62477b2cc6e9"
@@ -909,6 +921,14 @@
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
+
+"@types/request@0.0.36":
+  version "0.0.36"
+  resolved "https://registry.yarnpkg.com/@types/request/-/request-0.0.36.tgz#e845870fc5fa372402d9f5c19fccc4ca0a5af543"
+  integrity sha1-6EWHD8X6NyQC2fXBn8zEygpa9UM=
+  dependencies:
+    "@types/form-data" "*"
+    "@types/node" "*"
 
 "@types/semver@^6.0.0":
   version "6.0.0"
@@ -1345,6 +1365,11 @@ bluebird@3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
   integrity sha512-MKiLiV+I1AA596t9w1sQJ8jkiSr5+ZKi0WKrYGUn6d1Fx+Ij4tIj+m2WMQSGczs5jZVxV339chE8iwk6F64wjA==
+
+bluebird@^3.5.1:
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
+  integrity sha512-5am6HnnfN+urzt4yfg7IgTbotDjIT/u8AJpEt0sIU9FtXfVeezXAPKswrG+xKUCOYAINpSdgZVDU6QFh+cuH3w==
 
 body-parser@1.19.0, body-parser@^1.18.3:
   version "1.19.0"
@@ -3770,6 +3795,17 @@ pkg-dir@^4.1.0:
   dependencies:
     find-up "^4.0.0"
 
+plaid@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/plaid/-/plaid-4.0.0.tgz#7f127cd9d650f75183f3b5d122bb6d9060704098"
+  integrity sha512-dBcTsEY7eRkDjoeQ+CIJGH2UCdam2z+wXRaqR6a2QGuHFGmEoEmBdv2u7x+a74Z8Kvq84LIKf1WqEIbbhB3pwA==
+  dependencies:
+    "@types/node" "9.x"
+    "@types/request" "0.0.36"
+    bluebird "^3.5.1"
+    ramda "0.23.x"
+    request "^2.74.0"
+
 please-upgrade-node@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/please-upgrade-node/-/please-upgrade-node-3.1.1.tgz#ed320051dfcc5024fae696712c8288993595e8ac"
@@ -3883,6 +3919,11 @@ qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
+
+ramda@0.23.x:
+  version "0.23.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
+  integrity sha1-zNE//3NJepOXTj6GMnv9h71ujis=
 
 range-parser@~1.2.1:
   version "1.2.1"
@@ -4044,7 +4085,7 @@ request-ip@2.1.3:
   dependencies:
     is_js "^0.9.0"
 
-request@2.88.0:
+request@2.88.0, request@^2.74.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   integrity sha512-NAqBSrijGLZdM0WZNsInLJpkJokL72XYjUpnB0iwsRgxh7dB6COrHnTBNwN0E+lHDAJzu7kLAkDeY08z2/A0hg==

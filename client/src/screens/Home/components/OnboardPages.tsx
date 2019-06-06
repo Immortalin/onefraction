@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useTransition, animated } from 'react-spring'
 import Input from '../../../components/Input'
 import AddressAutofillInput, { MapsPrediction } from './AddressAutofillInput'
+import PlaidLink from './PlaidLink'
 
 const PageWrapper = styled(View)`
   flex: 1;
@@ -66,11 +67,11 @@ const RentAmountPage = (props: {
   </animated.div>
 )
 
-const ConnectBankPage = (props: { style: any }) => (
+const ConnectBankPage = (props: { setPublicToken: (publicToken: string) => void; style: any }) => (
   <animated.div style={props.style}>
     <PageWrapper>
       <Title>Connect your bank account</Title>
-
+      <PlaidLink setPublicToken={props.setPublicToken} />
       <View />
     </PageWrapper>
   </animated.div>
@@ -81,9 +82,16 @@ interface OnboardPagesProps {
   rent: string
   setRent: (text: string) => void
   setSelectedItem: (item: MapsPrediction | null) => void
+  setPublicToken: (publicToken: string) => void
 }
 
-const OnboardPages = ({ page, setSelectedItem, rent, setRent }: OnboardPagesProps) => {
+const OnboardPages = ({
+  page,
+  setSelectedItem,
+  rent,
+  setRent,
+  setPublicToken,
+}: OnboardPagesProps) => {
   const transitions = useTransition(page, null, {
     initial: { opacity: 1, position: 'absolute', width: '100%', height: '100%', left: 0 },
     from: { opacity: 0, position: 'absolute', width: '100%', height: '100%', left: 300 },
@@ -100,7 +108,7 @@ const OnboardPages = ({ page, setSelectedItem, rent, setRent }: OnboardPagesProp
           case 1:
             return <RentAmountPage value={rent} onChangeText={setRent} style={props} />
           case 2:
-            return <ConnectBankPage style={props} />
+            return <ConnectBankPage style={props} setPublicToken={setPublicToken} />
           default:
             return null
         }

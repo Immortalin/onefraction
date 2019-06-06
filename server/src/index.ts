@@ -6,7 +6,7 @@ import { mergeResolvers, mergeTypeDefs, mergeSchemas } from 'graphql-toolkit'
 import { PORT, MONGO_HOST, DB_NAME } from './modules/common/consts'
 import UserResolver from './modules/user/UserResolver'
 import { authChecker } from './modules/user/authChecker'
-import { setUpAccounts, userTypeDefs } from './modules/user/accounts'
+import { setUpAccounts } from './modules/user/accounts'
 import { TypegooseMiddleware } from './middleware/typegoose'
 ;(async () => {
   const mongooseConnection = await mongoose.connect(
@@ -25,7 +25,7 @@ import { TypegooseMiddleware } from './middleware/typegoose'
   })
 
   const schema = makeExecutableSchema({
-    typeDefs: mergeTypeDefs([userTypeDefs, accountsGraphQL.typeDefs]),
+    typeDefs: mergeTypeDefs([accountsGraphQL.typeDefs]),
     resolvers: mergeResolvers([accountsGraphQL.resolvers]),
     schemaDirectives: {
       ...accountsGraphQL.schemaDirectives,

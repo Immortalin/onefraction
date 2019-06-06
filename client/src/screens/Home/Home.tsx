@@ -1,11 +1,13 @@
 import * as React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Dimensions } from 'react-native'
 import gql from 'graphql-tag'
 import styled from 'styled-components'
 import { useMeQuery } from '../../generated/graphql'
 import { SidebarContext } from '../../components/MainLayout'
 import Dashboard from './components/Dashboard'
 import Onboard from './components/Onboard'
+
+const { width } = Dimensions.get('window')
 
 export const GET_USER = gql`
   query Me {
@@ -47,9 +49,9 @@ const Home = () => {
   const firstName = data && data.me && data.me.profile.firstName
   const isOnboarded = data && data.me && data.me.isOnboarded
   return (
-    <Wrapper sidebarOpen={sidebarOpen}>
+    <Wrapper sidebarOpen={sidebarOpen && width > 930}>
       {loading ? null : (
-        <View style={{ width: '75%', height: '75%', overflow: 'hidden' }}>
+        <View style={{ width: '75%', height: '85%', overflow: 'hidden' }}>
           <Title>{`Hello, ${firstName}!`}</Title>
           {isOnboarded ? <Dashboard /> : <Onboard />}
         </View>

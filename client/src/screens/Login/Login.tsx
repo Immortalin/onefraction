@@ -7,6 +7,7 @@ import { useUserContext } from '../../screens/Login/UserContext'
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
 import LinkToOtherLogin from './components/LinkToOtherLogin'
+import { useIsLandlord } from '../../utils/hooks'
 
 const Wrapper = styled(View)`
   min-height: 100vh;
@@ -19,8 +20,11 @@ const Wrapper = styled(View)`
 const LogoWrapper = styled(View)`
   position: absolute;
   top: 86px;
-  /* top: 44px;
-  left: 50px; */
+`
+
+const Logo = styled(Image)`
+  width: 180px;
+  height: 46px;
 `
 
 export const ContentWrapper = styled(View)`
@@ -43,7 +47,7 @@ export const FormRowWrapper = styled(View)`
 `
 
 const Login = (props: any) => {
-  const isLandlord = props.location.pathname.indexOf('/landlord') !== -1
+  const isLandlord = useIsLandlord(props.location)
   const path = isLandlord
     ? props.location.pathname.substring('/landlord'.length)
     : props.location.pathname
@@ -51,7 +55,7 @@ const Login = (props: any) => {
   return (
     <Wrapper>
       <LogoWrapper>
-        <Image source={{ uri: logo }} style={{ width: 180, height: 46 }} />
+        <Logo source={{ uri: logo }} />
       </LogoWrapper>
       <View style={{ width: 600, height: 500 }}>
         <TabBox activeTab={path} isLandlord={isLandlord}>

@@ -6,8 +6,8 @@ import {
   Redirect as WebRedirect,
 } from 'react-router-dom'
 
-export let Router = BrowserRouter
-export let Route = WebRoute
-export let Link = WebLink
-export let Switch = WebSwitch
-export let Redirect = WebRedirect
+export const Router = BrowserRouter
+export const Route = WebRoute
+export const Link = WebLink
+export const Switch = WebSwitch
+export const Redirect = WebRedirect

@@ -6,8 +6,8 @@ import {
   Redirect as NativeRedirect,
 } from 'react-router-native'
 
-export let Router = NativeRouter
-export let Route = NativeRoute
-export let Link = NativeLink
-export let Switch = NativeSwitch
-export let Redirect = NativeRedirect
+export const Router = NativeRouter
+export const Route = NativeRoute
+export const Link = NativeLink
+export const Switch = NativeSwitch
+export const Redirect = NativeRedirect

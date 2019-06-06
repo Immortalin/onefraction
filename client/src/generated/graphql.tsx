@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import * as ReactApollo from 'react-apollo'
 import * as ReactApolloHooks from 'react-apollo-hooks'
 export type Maybe<T> = T | null
 /** All built-in and custom scalars, mapped to their actual values */
@@ -22,16 +23,10 @@ export type AuthenticateParamsInput = {
 }
 
 export type CreateUserInput = {
-  profile: CreateUserProfileInput
-  roles?: Maybe<Array<Scalars['String']>>
   username?: Maybe<Scalars['String']>
   email?: Maybe<Scalars['String']>
   password?: Maybe<Scalars['String']>
-}
-
-export type CreateUserProfileInput = {
-  firstName: Scalars['String']
-  lastName: Scalars['String']
+  profile: ProfileInput
 }
 
 export type EmailRecord = {
@@ -67,6 +62,8 @@ export type Mutation = {
   refreshTokens?: Maybe<LoginResult>
   logout?: Maybe<Scalars['Boolean']>
   authenticate?: Maybe<LoginResult>
+  onboardUser: Scalars['Boolean']
+  setPlaidToken: Scalars['Boolean']
 }
 
 export type MutationCreateUserArgs = {
@@ -119,10 +116,43 @@ export type MutationAuthenticateArgs = {
   params: AuthenticateParamsInput
 }
 
+export type MutationOnboardUserArgs = {
+  property: PropertyInput
+  publicToken: Scalars['String']
+}
+
+export type MutationSetPlaidTokenArgs = {
+  publicToken: Scalars['String']
+}
+
+export type Plaid = {
+  __typename?: 'Plaid'
+  accessToken: Scalars['String']
+  itemId: Scalars['String']
+}
+
 export type Profile = {
   __typename?: 'Profile'
   firstName: Scalars['String']
   lastName: Scalars['String']
+}
+
+export type ProfileInput = {
+  firstName: Scalars['String']
+  lastName: Scalars['String']
+}
+
+export type Property = {
+  __typename?: 'Property'
+  address: Scalars['String']
+  placeId: Scalars['String']
+  rentAmount: Scalars['Float']
+}
+
+export type PropertyInput = {
+  address: Scalars['String']
+  placeId: Scalars['String']
+  rentAmount: Scalars['Float']
 }
 
 export type Query = {
@@ -173,6 +203,8 @@ export type User = {
   username?: Maybe<Scalars['String']>
   _id: Scalars['ID']
   profile: Profile
+  plaid?: Maybe<Plaid>
+  properties?: Maybe<Array<Property>>
   roles: Array<Role>
   isOnboarded?: Maybe<Scalars['Boolean']>
   createdAt: Scalars['DateTime']
@@ -184,6 +216,13 @@ export type UserInput = {
   email?: Maybe<Scalars['String']>
   username?: Maybe<Scalars['String']>
 }
+export type OnboardUserMutationVariables = {
+  publicToken: Scalars['String']
+  property: PropertyInput
+}
+
+export type OnboardUserMutation = { __typename?: 'Mutation' } & Pick<Mutation, 'onboardUser'>
+
 export type MeQueryVariables = {}
 
 export type MeQuery = { __typename?: 'Query' } & {
@@ -193,6 +232,27 @@ export type MeQuery = { __typename?: 'Query' } & {
     }
 }
 
+export const OnboardUserDocument = gql`
+  mutation OnboardUser($publicToken: String!, $property: PropertyInput!) {
+    onboardUser(publicToken: $publicToken, property: $property)
+  }
+`
+export type OnboardUserMutationFn = ReactApollo.MutationFn<
+  OnboardUserMutation,
+  OnboardUserMutationVariables
+>
+
+export function useOnboardUserMutation(
+  baseOptions?: ReactApolloHooks.MutationHookOptions<
+    OnboardUserMutation,
+    OnboardUserMutationVariables
+  >
+) {
+  return ReactApolloHooks.useMutation<OnboardUserMutation, OnboardUserMutationVariables>(
+    OnboardUserDocument,
+    baseOptions
+  )
+}
 export const MeDocument = gql`
   query Me {
     me {

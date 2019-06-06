@@ -29,7 +29,7 @@ const PredictionDropdownInner = styled(View)`
   padding: 12px 10px;
   box-shadow: 0 13px 27px 0 rgba(0, 0, 0, 0.1);
   border-radius: 2.67px;
-  width: 92%;
+  width: 95%;
   /* transition: height 0.3s ease; */
 `
 

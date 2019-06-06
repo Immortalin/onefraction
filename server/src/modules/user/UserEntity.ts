@@ -2,17 +2,42 @@ import { prop, Typegoose } from 'typegoose'
 import { ObjectType, Field, ID } from 'type-graphql'
 import { ObjectId } from 'mongodb'
 import { Role } from './consts'
-import { PromiseProvider } from 'mongoose'
 
 @ObjectType()
-class Profile {
-  @prop()
+export class Profile {
+  @prop({ required: true })
   @Field()
   firstName: string
 
-  @prop()
+  @prop({ required: true })
   @Field()
   lastName: string
+}
+
+@ObjectType()
+export class Plaid {
+  @prop({ required: true })
+  @Field()
+  accessToken: string
+
+  @prop({ required: true })
+  @Field()
+  itemId: string
+}
+
+@ObjectType()
+export class Property {
+  @prop({ required: true })
+  @Field()
+  address: string
+
+  @prop({ required: true })
+  @Field()
+  placeId: string
+
+  @prop({ required: true })
+  @Field()
+  rentAmount: number
 }
 
 @ObjectType()
@@ -23,6 +48,14 @@ export class User extends Typegoose {
   @prop()
   @Field(type => Profile)
   profile: Profile
+
+  @prop()
+  @Field(type => Plaid, { nullable: true })
+  plaid?: Plaid
+
+  @prop()
+  @Field(type => Property, { nullable: true })
+  properties?: Property[]
 
   @prop({ required: true, enum: Role })
   @Field(type => Role)

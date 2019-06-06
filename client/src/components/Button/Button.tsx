@@ -31,14 +31,14 @@ const Label = styled(Text)`
 `
 
 interface ButtonProps extends TouchableOpacityProps {
-  children: string
+  children: any
   variant?: Variants
   style?: any
 }
 
 const Button = ({ children, variant, style, ...props }: ButtonProps) => (
   <Wrapper {...props} variant={variant} activeOpacity={0.6} style={style}>
-    <Label>{children}</Label>
+    {typeof children === 'string' ? <Label>{children}</Label> : children}
   </Wrapper>
 )
 

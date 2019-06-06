@@ -34,15 +34,3 @@ export const setUpAccounts = (connection: any) => {
 
   return { accountsGraphQL, accountsServer }
 }
-
-export const userTypeDefs = `
-  # Our custom fields to add to the user
-  extend input CreateUserInput {
-    profile: CreateUserProfileInput!
-    roles: [String!]
-  }
-  input CreateUserProfileInput {
-    firstName: String!
-    lastName: String!
-  }
-`
