@@ -84,6 +84,7 @@ export default class UserResolver {
           itemId: response.item_id,
         }
         user.properties = [property]
+        user.isOnboarded = true
         await user.save()
 
         resolve(true)

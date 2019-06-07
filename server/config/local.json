@@ -2,5 +2,11 @@
   "PORT": 4000,
   "DB_NAME": "oneFraction",
   "MONGO_HOST": "",
-  "ACCOUNTS_SECRET": "979083ce-a9b6-483d-a899-ea22d5b0a1dd"
+  "ACCOUNTS_SECRET": "979083ce-a9b6-483d-a899-ea22d5b0a1dd",
+  "PLAID_CLIENT_ID": "5cf92b434c3aa500121bfad9",
+  "PLAID_SECRET": "7bec015f38a285e9d48d8fd16ba79b",
+  "PLAID_PUBLIC_KEY": "3bc02bb8840d84f2e9b803add9191e",
+  "PLAID_PRODUCTS": "transactions",
+  "PLAID_COUNTRY_CODES": "US",
+  "PLAID_ENV": "sandbox"
 }

@@ -44,16 +44,16 @@ const Title = styled(Text)`
 `
 
 const Home = () => {
-  const { data, loading } = useMeQuery()
+  const { data, loading, refetch } = useMeQuery()
   const { sidebarOpen } = React.useContext(SidebarContext)
   const firstName = data && data.me && data.me.profile.firstName
   const isOnboarded = data && data.me && data.me.isOnboarded
   return (
     <Wrapper sidebarOpen={sidebarOpen && width > 930}>
       {loading ? null : (
-        <View style={{ width: '75%', height: '85%', overflow: 'hidden' }}>
+        <View style={{ position: 'relative', width: '75%', height: '85%' }}>
           <Title>{`Hello, ${firstName}!`}</Title>
-          {isOnboarded ? <Dashboard /> : <Onboard />}
+          {isOnboarded ? <Dashboard /> : <Onboard done={refetch} />}
         </View>
       )}
     </Wrapper>

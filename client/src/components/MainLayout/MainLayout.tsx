@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components'
-import { useMeQuery } from '../../generated/graphql'
+// import { useMeQuery } from '../../generated/graphql'
 import Sidebar from './Sidebar'
 import MenuIcon from './MenuIcon'
 
@@ -33,9 +33,10 @@ interface MainLayoutProps {
 export const SidebarContext = React.createContext({ sidebarOpen: false })
 
 const MainLayout = ({ children }: MainLayoutProps) => {
-  const { data } = useMeQuery()
+  // const { data } = useMeQuery()
 
-  const [sidebarOpen, setSidebarOpen] = React.useState(!!(data && data.me && data.me.isOnboarded))
+  // const [sidebarOpen, setSidebarOpen] = React.useState(!!(data && data.me && data.me.isOnboarded))
+  const [sidebarOpen, setSidebarOpen] = React.useState(true)
 
   return (
     <SidebarContext.Provider value={{ sidebarOpen }}>

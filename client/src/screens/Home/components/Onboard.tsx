@@ -39,7 +39,7 @@ const DotRow = styled(View)`
   margin-bottom: 20px;
 `
 
-const Onboard = () => {
+const Onboard = (props: { done: () => void }) => {
   const onboardUser = useOnboardUserMutation()
   const [selectedItem, setSelectedItem] = React.useState<MapsPrediction | null>(null)
   const [publicToken, setPublicToken] = React.useState<string>('')
@@ -47,22 +47,19 @@ const Onboard = () => {
   const [page, setPage] = React.useState(0)
   const isNextDisabled = [!selectedItem || !selectedItem.place_id, !rent, !publicToken]
 
-  const onPressNext = async () => {
-    if (page === 2) {
-      await onboardUser({
-        variables: {
-          publicToken,
-          property: {
-            address: selectedItem!.description,
-            placeId: selectedItem!.place_id,
-            rentAmount: parseInt(rent),
-          },
+  const onPressDone = async (publicToken: string) => {
+    await setPublicToken(publicToken)
+    await onboardUser({
+      variables: {
+        publicToken,
+        property: {
+          address: selectedItem!.description,
+          placeId: selectedItem!.place_id,
+          rentAmount: parseInt(rent),
         },
-      })
-      console.log('DONE!!!')
-    } else {
-      setPage(page + 1)
-    }
+      },
+    })
+    props.done()
   }
 
   return (
@@ -70,10 +67,10 @@ const Onboard = () => {
       <BoxInner>
         <OnboardPages
           rent={rent}
+          page={page}
           setRent={setRent}
           setSelectedItem={setSelectedItem}
-          setPublicToken={setPublicToken}
-          page={page}
+          setPublicToken={onPressDone}
         />
         <View
           style={{ position: 'relative', marginBottom: 40, marginTop: 52, alignItems: 'center' }}
@@ -83,7 +80,10 @@ const Onboard = () => {
               <Dot active={i === page} />
             ))}
           </DotRow>
-          <Button onPress={onPressNext} disabled={isNextDisabled[page]}>
+          <Button
+            onPress={page !== 2 ? () => setPage(page + 1) : () => {}}
+            disabled={isNextDisabled[page]}
+          >
             {page === 2 ? 'Done' : 'Next'}
           </Button>
         </View>
