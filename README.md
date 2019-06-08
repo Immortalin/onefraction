@@ -8,7 +8,7 @@ This is a platform I began building for a client. After he signed and I began bu
 
 ## What is this?
 
-OneFraction was supposed to a platform that gave users rewards for paying their rent through the platform as opposed to check or bank transfer. The value would come from leveraging data to eventually create a rental marketplace where users can find the perfect apartment to move into.
+OneFraction was supposed to be a platform that gave users rewards for paying their rent through the platform as opposed to check or bank transfer. The value would come from leveraging data to eventually create a rental marketplace where users can find the perfect apartment to move into.
 
 ## Stack
 
