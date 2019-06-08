@@ -25,7 +25,7 @@ Accounts are set up using the wonderful `accounts.js` library.
 
 ## Other cool things
 
-I've included a number of animations using plaid css and `react-spring`. If you're a react developer and want to animate your work learn `react-spring`. Thank me later. This project is using Plaid to access read info for users bank accounts.
+I've included a number of animations using plain css and `react-spring`. If you're a react developer and want to animate your work learn `react-spring`. Thank me later. This project is using Plaid to access read info for users bank accounts.
 
 ## License
 
