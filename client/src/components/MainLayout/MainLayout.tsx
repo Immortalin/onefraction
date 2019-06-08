@@ -36,7 +36,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   // const { data } = useMeQuery()
 
   // const [sidebarOpen, setSidebarOpen] = React.useState(!!(data && data.me && data.me.isOnboarded))
-  const [sidebarOpen, setSidebarOpen] = React.useState(true)
+  const [sidebarOpen, setSidebarOpen] = React.useState(false)
 
   return (
     <SidebarContext.Provider value={{ sidebarOpen }}>

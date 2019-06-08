@@ -20,6 +20,8 @@ interface PlaidLinkProps {
 class PlaidLink extends React.Component<PlaidLinkProps> {
   plaidHandler: any
 
+  state = { loaded: false }
+
   onLoadScript = () => {
     this.plaidHandler = Plaid.create({
       clientName: 'OneFraction',
@@ -45,12 +47,17 @@ class PlaidLink extends React.Component<PlaidLinkProps> {
         console.log({ err, metadata })
       },
     })
+    this.setState({ loaded: true })
   }
 
   render() {
     return (
       <View>
-        <Button variant={ButtonVariants.primary} onPress={() => this.plaidHandler.open()}>
+        <Button
+          disabled={!this.plaidHandler}
+          variant={ButtonVariants.primary}
+          onPress={() => this.plaidHandler.open()}
+        >
           <Image source={{ uri: plaidLogo }} style={{ width: 130, height: 130 }} />
         </Button>
         <Script
