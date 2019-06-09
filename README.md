@@ -14,7 +14,7 @@ OneFraction was supposed to be a platform that gave users rewards for paying the
 
 ### Client
 
-Built using `react-native-web` because its really cool and really easy to turn into a mobile app
+Built using `react-native-web` because it's really cool and really easy to turn into a mobile app
 
 ### Server
 
@@ -27,8 +27,8 @@ Accounts are set up using the wonderful `accounts.js` library.
 
 ## Other cool things
 
-I've included a number of animations using plain css and `react-spring`. If you're a react developer and want to animate your work learn `react-spring`. Thank me later. This project is using Plaid to access read info for users bank accounts.
+I've included a number of animations using plain CSS and `react-spring`. If you're a react developer and want to animate your work learn `react-spring`. Thank me later. This project is using Plaid to access read info for users bank accounts.
 
 ## License
 
-MIT
+[MIT](LICENSE)
