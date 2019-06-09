@@ -42,6 +42,7 @@ yarn watch
 # In ./client
 yarn install
 yarn start
+yarn gen:types:watch
 ```
 
 ## License
