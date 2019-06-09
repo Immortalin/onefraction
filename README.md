@@ -33,7 +33,7 @@ I've included a number of animations using plain CSS and `react-spring`. If you'
 
 ```sh
 # Run mongo
-sudo mognod
+sudo mongod
 
 # In ./server
 yarn install
