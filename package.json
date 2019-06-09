@@ -1,0 +1,9 @@
+{
+  "name": "onefraction-boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:TrillCyborg/onefraction.git",
+  "author": "Jason Werner <jason@trxrg.com>",
+  "license": "MIT",
+  "private": false
+}
