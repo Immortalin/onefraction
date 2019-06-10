@@ -24,7 +24,7 @@ class PlaidLink extends React.Component<PlaidLinkProps> {
 
   onLoadScript = () => {
     this.plaidHandler = Plaid.create({
-      clientName: 'OneFraction',
+      clientName: 'FullStack',
       countryCodes: PLAID_COUNTRY_CODES.split(',') as PlaidCountryCodes[],
       env: PLAID_ENV,
       key: PLAID_PUBLIC_KEY,

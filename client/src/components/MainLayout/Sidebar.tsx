@@ -1,12 +1,11 @@
 import * as React from 'react'
-import { View, Image } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components'
-import logoSmall from '../../assets/images/logo-small.svg'
+// import logoSmall from '../../assets/images/logo-small.svg'
 import { Link } from '../Router'
 import Button, { Variants as ButtonVariants } from '../Button'
 import SidebarItem from './SidebarItem'
 import dashbaordIcon from '../../assets/images/icons/dashboard.svg'
-import rewardsIcon from '../../assets/images/icons/rewards.svg'
 import settingsIcon from '../../assets/images/icons/settings.svg'
 
 const Wrapper = styled(View)<{ open: boolean }>`
@@ -22,13 +21,13 @@ const Wrapper = styled(View)<{ open: boolean }>`
   transition: transform 0.3s ease;
 `
 
-const Logo = styled(Image)`
-  width: 27px;
-  height: 36px;
-  position: absolute;
-  top: 50px;
-  right: 60px;
-`
+// const Logo = styled(Image)`
+//   width: 27px;
+//   height: 36px;
+//   position: absolute;
+//   top: 50px;
+//   right: 60px;
+// `
 
 interface SidebarProps {
   open: boolean
@@ -37,14 +36,11 @@ interface SidebarProps {
 const Sidebar = ({ open }: SidebarProps) => (
   <Wrapper open={open}>
     <Link to="/" style={{ position: 'relative' }}>
-      <Logo source={{ uri: logoSmall }} />
+      {/* <Logo source={{ uri: logoSmall }} /> */}
     </Link>
     <View style={{ marginRight: 40 }}>
       <SidebarItem to="/" active icon={dashbaordIcon}>
         Dashboard
-      </SidebarItem>
-      <SidebarItem to="/rewards" icon={rewardsIcon}>
-        Rewards
       </SidebarItem>
       <SidebarItem to="/settings" icon={settingsIcon}>
         Settings

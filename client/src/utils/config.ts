@@ -14,7 +14,7 @@ interface Config {
 
 export const Config: Config = {
   app: {
-    name: 'OneFraction',
+    name: 'FullStack',
   },
   os: {
     android: 'android',

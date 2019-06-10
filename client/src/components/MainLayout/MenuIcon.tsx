@@ -7,7 +7,7 @@ const Wrapper = styled(TouchableOpacity)`
   padding: 10px;
   position: fixed;
   right: 50px;
-  top: 56px;
+  top: 50px;
 `
 
 const Icon = styled(Image)`

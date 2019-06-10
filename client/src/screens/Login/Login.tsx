@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { View, Image } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components'
-import logo from '../../assets/images/logo-full.svg'
+// import logo from '../../assets/images/logo-full.svg'
 import TabBox, { Tabs } from './components/TabBox'
 import { useUserContext } from '../../screens/Login/UserContext'
 import LoginForm from './components/LoginForm'
@@ -22,10 +22,10 @@ const LogoWrapper = styled(View)`
   top: 86px;
 `
 
-const Logo = styled(Image)`
-  width: 180px;
-  height: 46px;
-`
+// const Logo = styled(Image)`
+//   width: 180px;
+//   height: 46px;
+// `
 
 export const ContentWrapper = styled(View)`
   flex: 1;
@@ -54,9 +54,7 @@ const Login = (props: any) => {
   const { logIn, signUp } = useUserContext()
   return (
     <Wrapper>
-      <LogoWrapper>
-        <Logo source={{ uri: logo }} />
-      </LogoWrapper>
+      <LogoWrapper>{/* <Logo source={{ uri: logo }} /> */}</LogoWrapper>
       <View style={{ width: 600, height: 500 }}>
         <TabBox activeTab={path} isLandlord={isLandlord}>
           {path === Tabs.login ? (
