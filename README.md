@@ -4,6 +4,10 @@ This is a platform I began building for a client. After he signed and I started 
 
 [follow me on Twitter](https://twitter.com/TrillCyborg) - [follow the designer](https://twitter.com/traf)
 
+Some of the awesome devs on Reddit asked that I create a tutorial series for how I built this project. Here it is! I'll be releasing it in parts as soon as each one is ready.
+
+[GitHub post](https://github.com/TrillCyborg/cutting-edge-tutorial/tree/master) - [Medium Post](https://medium.com/@TrillCyborg/building-a-cutting-edge-full-stack-app-3c575fbe224e)
+
 ![fullstack.gif](https://i.imgur.com/jYb4YQL.gif)
 
 ## What is this?
