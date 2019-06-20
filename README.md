@@ -1,14 +1,12 @@
 # FullStack
 
-![fullstack.gif](https://i.imgur.com/jYb4YQL.gif)
-
-[follow me on Twitter](https://twitter.com/TrillCyborg) - [follow the designer](https://twitter.com/traf)
-
 ## What is this?
 
 This project can be used as a full-stack boilerplate for you to learn some cool things or build your next app off of. It's pretty much a top picks of my favorite tech and best practices. I hope you enjoy it!
 
 If you're trying to expand into some of the technologies I'm using here, star it, fork it and start playing! Feel free to find my email at the bottom of [my site](https://trxrg.com/) and reach out with any questions.
+
+[follow me on Twitter](https://twitter.com/TrillCyborg)
 
 ## Stack
 
