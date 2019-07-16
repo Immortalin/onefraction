@@ -1,16 +1,12 @@
 # FullStack
 
-This is a platform I began building for a client. After he signed and I started working he decided to pivot and not pay me. Sometimes you get screwed in business but at least now I have a cool boilerplate to give away.
-
-[follow me on Twitter](https://twitter.com/TrillCyborg) - [follow the designer](https://twitter.com/traf)
-
-![fullstack.gif](https://i.imgur.com/jYb4YQL.gif)
-
 ## What is this?
 
-This project was supposed to be an app where users receive benefits for paying their rent through the platform as opposed to check or bank transfer. Since this repo rose to the top of _Hacker News_, _r/programming_ and _Github_ I have decided it deserves a new life. So allow me to reintroduce it as a full-stack boilerplate with my current top picks for tech I like to use on client work.
+This project can be used as a full-stack boilerplate for you to learn some cool things or build your next app off of. It's pretty much a top picks of my favorite tech and best practices. I hope you enjoy it!
 
 If you're trying to expand into some of the technologies I'm using here, star it, fork it and start playing! Feel free to find my email at the bottom of [my site](https://trxrg.com/) and reach out with any questions.
+
+[follow me on Twitter](https://twitter.com/TrillCyborg)
 
 ## Stack
 
