@@ -1,0 +1,9 @@
+{
+  "name": "fullstack-boilerplate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:TrillCyborg/fullstack.git",
+  "author": "Jason Werner <jason@trxrg.com>",
+  "license": "MIT",
+  "private": false
+}

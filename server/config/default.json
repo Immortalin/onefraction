@@ -1,8 +1,8 @@
 {
   "PORT": 4000,
-  "DB_NAME": "oneFraction",
+  "DB_NAME": "fullstack",
   "MONGO_HOST": "",
-  "ACCOUNTS_SECRET": "",
+  "ACCOUNTS_SECRET": "secret",
   "PLAID_CLIENT_ID": "xxxxxxx",
   "PLAID_SECRET": "xxxxxxx",
   "PLAID_PUBLIC_KEY": "xxxxxxx",
